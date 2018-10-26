@@ -1,59 +1,33 @@
-import tkinter
-from urllib.request import urlopen
-import xmltodict
-from tkinter import *
 from Film_details import *
-
-
-def film_kiezen():
-    return film_details()
-
+from tkinter import *
+import tkinter.messagebox as box
 
 master_root = Tk()
 root = Frame(master=master_root)
-root.pack(side=TOP)
+root.pack(side=LEFT)
+root2 = Frame(master=master_root)
+root2.pack(side=BOTTOM)
 
 
-titel = Label(master = root,
-                font = ('Arial', 18, 'italic'),
-                text = 'Titel |')
-titel.grid(row = 0, column = 0, pady = 4)
+titel_lbl = Label(master=root,
+                  font=('Arial', 18, 'italic'),
+                  text="Film 1: " + str(film_details(0)[0]) + " Jaar: " + str(film_details(0)[1]) +
+                       " Genre: " + str(film_details(0)[2]) + " Duur: " + str(film_details(0)[3]) +
+                       " IMDB Rating: " + str(film_details(0)[4]) + "\n")
+
+titel_lbl.grid(row=0, column=0, pady=4, padx=100)
+
+filmnummer = 0
+invoer = Entry(master=root)
+invoer.focus_set()
+invoer.get()
 
 
-datum = Label(master = root,
-                font = ('Arial', 18, 'italic'),
-                text = 'Datum |')
-datum.grid(row = 0, column = 1, pady= 4)
 
-duur = Label(master = root,
-                font = ('Arial', 18, 'italic'),
-                text = 'Duur |')
-duur.grid(row = 0, column = 2, pady= 4)
-
-jaar = Label(master = root,
-                font = ('Arial', 18, 'italic'),
-                text = 'Jaar |')
-jaar.grid(row = 0, column = 3, pady= 4)
-
-genre = Label(master = root,
-                font = ('Arial', 18, 'italic'),
-                text = 'Genre |')
-genre.grid(row = 0, column = 4, pady= 4)
-
-
-locatie = Label(master = root,
-                font = ('Arial', 18, 'italic'),
-                text = 'Locatie')
-locatie.grid(row = 0, column = 5, pady= 4)
-
-knop = Button(master = root,
-              font = ('Arial', 20, 'bold'),
-              text = 'Kies Film',
-              command = film_kiezen())
-knop.grid(row = 0, column = 6, pady = 4)
-
+knop = Button(master=root,
+              font=('Arial', 20, 'bold'),
+              text='Kies Film')
+knop.grid(pady=12)
 
 
 root.mainloop()
-
-
