@@ -1,5 +1,6 @@
-﻿<filmsoptv datum="19-10-2018">
-<film>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<filmsoptv datum="19-10-2018">
+<film id = '1'>
 <ft_link>https://www.filmtotaal.nl/film/20966</ft_link>
 <titel>Knerten gifter seg</titel>
 <jaar>2010</jaar>
@@ -27,7 +28,7 @@ Mama heeft een fietsongeluk en belandt in het ziekenhuis. Junior vermoedt meteen
 <zender>NPO3</zender>
 <filmtip>0</filmtip>
 </film>
-<film>
+<film id = '2'>
 <ft_link>https://www.filmtotaal.nl/film/33163</ft_link>
 <titel>Conni und Co 2 - Das Geheimnis des T-Rex</titel>
 <jaar>2017</jaar>
@@ -55,7 +56,7 @@ Tiener Connie en haar vrienden proberen een eiland te redden, dat vernietigd dre
 <zender>NPO3</zender>
 <filmtip>0</filmtip>
 </film>
-<film>
+<film id = '3'>
 <ft_link>https://www.filmtotaal.nl/film/28418</ft_link>
 <titel>Ostwind 2</titel>
 <jaar>2015</jaar>
@@ -83,7 +84,7 @@ Niets doet Mika meer plezier dan tijd doorbrengen met haar geliefde hengst Ostwi
 <zender>NPO3</zender>
 <filmtip>1</filmtip>
 </film>
-<film>
+<film id = '4'>
 <ft_link>https://www.filmtotaal.nl/film/15914</ft_link>
 <titel>Universal Soldier: Regeneration</titel>
 <jaar>2009</jaar>
@@ -111,7 +112,7 @@ Terroristen dreigen met bommen Chernobyl's nucleaire reactor op te blazen, wat d
 <zender>RTL7</zender>
 <filmtip>0</filmtip>
 </film>
-<film>
+<film id = '5'>
 <ft_link>https://www.filmtotaal.nl/film/16696</ft_link>
 <titel>Serious Moonlight</titel>
 <jaar>2009</jaar>
@@ -139,7 +140,7 @@ Louise is een succesvolle en hoogstaande advocaat die ontdekt dat haar man haar 
 <zender>RTL8</zender>
 <filmtip>0</filmtip>
 </film>
-<film>
+<film id = '6'>
 <ft_link>https://www.filmtotaal.nl/film/3249</ft_link>
 <titel>The Fast and the Furious</titel>
 <jaar>2001</jaar>
@@ -169,7 +170,7 @@ Domenic Toretto is de leider van een straatbende die er van verdacht wordt dure 
 <zender>SBS9</zender>
 <filmtip>1</filmtip>
 </film>
-<film>
+<film id = '7'>
 <ft_link>https://www.filmtotaal.nl/film/11205</ft_link>
 <titel>Mississippi Burning</titel>
 <jaar>1988</jaar>
@@ -197,7 +198,7 @@ Mississippi 1964. Drie mensenrechtenactivisten worden op gruwelijke wijze vermoo
 <zender>Canvas</zender>
 <filmtip>1</filmtip>
 </film>
-<film>
+<film id = '8'>
 <ft_link>https://www.filmtotaal.nl/film/15653</ft_link>
 <titel>Let the Right One In</titel>
 <jaar>2008</jaar>
@@ -227,7 +228,7 @@ Oskar is een 12-jarig jongetje, dat continu wordt geplaagd door twee bullebakken
 <zender>NPO3</zender>
 <filmtip>1</filmtip>
 </film>
-<film>
+<film id = '9'>
 <ft_link>https://www.filmtotaal.nl/film/22416</ft_link>
 <titel>Universal Soldier: Day of Reckoning</titel>
 <jaar>2012</jaar>
@@ -255,7 +256,7 @@ In 'Day of Reckoning' stelen terroristen de uiterst geheime technologie waarmee 
 <zender>RTL7</zender>
 <filmtip>0</filmtip>
 </film>
-<film>
+<film id = '10'>
 <ft_link>https://www.filmtotaal.nl/film/27549</ft_link>
 <titel>Lake Placid 3</titel>
 <jaar>2010</jaar>
@@ -283,7 +284,7 @@ De lokale bewoners stellen dan wel dat de krokodillen in Lake Placid weg zijn, m
 <zender>Comedy Central</zender>
 <filmtip>0</filmtip>
 </film>
-<film>
+<film id = '11'>
 <ft_link>https://www.filmtotaal.nl/film/3482</ft_link>
 <titel>Surviving the Game</titel>
 <jaar>1994</jaar>
@@ -313,7 +314,7 @@ Mason, die op straat leeft, wil een einde aan zijn leven maken. Op de dag dat hi
 <zender>SBS9</zender>
 <filmtip>1</filmtip>
 </film>
-<film>
+<film id = '12'>
 <ft_link>https://www.filmtotaal.nl/film/11082</ft_link>
 <titel>Kiss Kiss Bang Bang</titel>
 <jaar>2005</jaar>
@@ -341,7 +342,7 @@ Harry Lockhart is al bij al een geschikte vent. Hij is weliswaar een onbetekenen
 <zender>Eeacute;n</zender>
 <filmtip>1</filmtip>
 </film>
-<film>
+<film id = '13'>
 <ft_link>https://www.filmtotaal.nl/film/21543</ft_link>
 <titel>Killer Joe</titel>
 <jaar>2011</jaar>

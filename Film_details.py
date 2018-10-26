@@ -1,44 +1,25 @@
-from tkinter import *
-from urllib.request import urlopen
-import xmltodict
 from Database import *
 
-keuze_film = 7
 
 def film_details(keuze_film):
-    database = open('database.csv', 'r', encoding='utf-8')
+    titel1 = films[keuze_film]['titel']
 
-    if keuze_film == 7:
+    jaar1 = films[keuze_film]['jaar']
 
-        for line in database.readlines(7):
-            gegevens = line.split(";")
+    genre1 = films[keuze_film]['genre']
 
-    url = gegevens[0]
+    duur1 = films[keuze_film]['duur']
 
-    titel = gegevens[1]
+    land1 = films[keuze_film]['land']
 
-    jaar = gegevens[2]
+    uitleg1 = films[keuze_film]['synopsis']
 
-    regisseur = gegevens[3]
+    regisseur1 = films[keuze_film]['regisseur']
 
-    cast = gegevens[4].split(':')
+    imdb_rating1 = films[keuze_film]['imdb_rating']
 
-    genre = gegevens[5]
+    zender1 = films[keuze_film]['zender']
 
-    land = gegevens[6]
+    total = [titel1, jaar1, genre1, duur1, imdb_rating1, land1, regisseur1, uitleg1, zender1]
 
-    cover = gegevens[7]
-
-    tagline = gegevens[8]
-
-    synopsis = gegevens[9]
-
-    duur = gegevens[10]
-
-    rating = gegevens[11]
-
-    return url, titel, jaar, regisseur, cast, genre, land, cover, tagline, synopsis, duur, rating
-    database.close()
-
-
-print(film_details(nummer_film))
+    return total
