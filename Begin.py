@@ -5,14 +5,17 @@ from tkinter import filedialog
 import pyqrcode
 import os
 import png
+import csv
 
 
 def toon_loginscherm():
     beginscherm.pack_forget()
+    beginscherm_beheer.pack_forget()
     loginscherm.pack()
 
 
 def toon_beginscherm():
+    detailscherm.forget
     detailscherm.pack_forget()
     loginscherm.pack_forget()
     beginscherm.pack()
@@ -98,8 +101,16 @@ def toon_beginscherm_beheer():
 
     toevoeg_knop.pack()
 
+    terug_knop = Button(master=beginscherm_beheer,
+                          text="Terug",
+                          font=('Arial', 14, 'bold'),
+                          bg='#c4ad5a',
+                          command=toon_loginscherm)
+    terug_knop.pack()
+
 
 def toon_detailscherm():
+    detailscherm.pack_forget()
     beginscherm.pack_forget()
     detailscherm.pack()
     loginscherm.pack_forget()
@@ -129,7 +140,7 @@ def toon_detailscherm():
                            text=totaal_tekst,
                            bg='#330d05',
                            fg='#c4ad5a')
-        detail_lbl.pack(anchor='w')
+        detail_lbl.pack(anchor='w', expand=True, fill=BOTH)
 
         betaalknop = Button(master=detailscherm,
                             text="Bevestig en ga naar betaalscherm",
@@ -138,22 +149,31 @@ def toon_detailscherm():
                             command=betalen
                             )
         betaalknop.pack()
+
+        terug_knop2 = Button(master=detailscherm,
+                            text="Terug",
+                            font=('Arial', 14, 'bold'),
+                            bg='#c4ad5a',
+                            command=toon_beginscherm)
+        terug_knop2.pack()
     else:
         messagebox.showinfo(message="Voer geldig filmnummer in.")
         toon_beginscherm()
 
 
 def login():
-    gebruikersnaam = gebruiker_1.get()
-    wachtwoord = wachtwoord_1.get()
-    if gebruikersnaam == 'gebruiker' and wachtwoord == 'gebruiker':
+    gebruikersnaam1 = gebruiker_1.get()
+    mail1 = email_1.get()
+    if gebruikersnaam1 and ' ' not in gebruikersnaam1 and '@' in mail1 and ' ' not in mail1 and '.' in mail1:
         box.showinfo('info', 'Welkom Gebruiker')
         toon_beginscherm()
-    elif gebruikersnaam == 'beheer' and wachtwoord == 'beheer':
-        box.showinfo('info', 'Welkom Beheerder')
-        toon_beginscherm_beheer()
     else:
         box.showinfo('info', 'Foutieve Login!')
+
+
+def login_beheer():
+    box.showinfo('info', 'Welkom Beheerder')
+    toon_beginscherm_beheer()
 
 
 def entryy():
@@ -162,35 +182,70 @@ def entryy():
     return keuze_film_entry
 
 
+def writer():
+    gebruikersnaam = gebruiker_1.get()
+    mail = email_1.get()
+    with open('database.csv', 'w', newline='') as myfile:
+        writer = csv.writer(myfile, delimiter=';')
+        writer.writerow((gebruikersnaam, mail , str(film_details(entryy())[0])))
+    myfile.close()
+
+
 def ga_verder():
-    toon_detailscherm()
-    entryy()
+    if entry.get() in "12345":
+
+        try:
+            toon_detailscherm()
+            entryy()
+
+        except:
+            boxx = messagebox
+            boxx.showinfo('Fout', 'Foute invoer, probeer opnieuw')
+            toon_beginscherm()
+    else:
+        boxx = messagebox
+        boxx.showinfo('Fout', 'Foute invoer, probeer opnieuw')
+        toon_beginscherm()
 
 
 def betalen():
     toon_bevestiging()
+    writer()
 
 
 def aanmaken():
+    gebruikersnaam2 = gebruiker_1.get()
     global my_qr
-    my_qr = pyqrcode.create(str(film_details(entryy())[0]))
+    my_qr = pyqrcode.create("Bewijs: " + gebruikersnaam2)
     my_qr.png("QR_CODE_FILM.png", scale=6)
     qr_image = my_qr.xbm(scale=6)
     global foto
     foto = BitmapImage(data=qr_image)
     messagebox.showinfo("Betaling geslaagd!", "U heeft betaald!")
+    tooncode()
     # als de betaling geslaagd is geeft hij dit aan.
 
 
+def toon_gebruikers():
+    file = open('database.csv', 'r')
+    lines = file.readlines()
+    box_gebruikers = messagebox
+    box_gebruikers.showinfo(lines)
+    file.close()
+
+
+
 def tooncode():
+    mail2 = email_1.get()
+    gebruikersnaam2 = gebruiker_1.get()
     notification_label = Label(master=bevestigscherm)
     notification_label.pack()
     sublabel = Label(master=bevestigscherm, bg='#330d05', fg='#c4ad5a')
     sublabel.pack()
 
     global foto
-    notification_label.config(image=foto)
-    sublabel.config(text='Uw QR-code voor: ' + str(film_details(entryy())[0]))
+    notification_label.config(image=foto, text="Naam: " + gebruikersnaam2 + " Mail: " + mail2)
+    sublabel.config(text=gebruikersnaam2 +' zijn/haar QR-code voor: ' + str(film_details(entryy())[0]))
 
 # De QR code wordt weergeven.
 
@@ -219,6 +274,13 @@ def toon_bevestiging():
     showbutton = Button(master=bevestigscherm, text="Uw QR code opslaan", font=("Arial", 14), command=opslaan,
                         bg='#c4ad5a')
     showbutton.pack()
+
+    terug_knop3 = Button(master=bevestigscherm,
+                         text="Terug",
+                         font=('Arial', 14, 'bold'),
+                         bg='#c4ad5a',
+                         command=toon_detailscherm)
+    terug_knop3.pack()
 
 
 master_root = Tk()
@@ -309,6 +371,13 @@ volgende_knop = Button(master=beginscherm,
 
 volgende_knop.pack()
 
+terug_knop1 = Button(master=beginscherm,
+                     text="Terug",
+                     font=('Arial', 14, 'bold'),
+                     bg='#c4ad5a',
+                     command=toon_loginscherm)
+terug_knop1.pack()
+
 detailscherm = Frame(master=master_root, bg='#330d05')
 detailscherm.pack(fill='both', expand=True)
 
@@ -318,25 +387,27 @@ bevestigscherm.pack(fill='both', expand=True)
 toevoegscherm = Frame(master=master_root, bg='#330d05')
 toevoegscherm.pack(fill='both', expand=True)
 
+
 loginscherm = Frame(master=master_root, bg='#330d05')
 loginscherm.pack(fill='both', expand=True)
-
-labeltop = Label(master=loginscherm, text='Gebruiker = gebruiker:gebruiker' + "\n" + "Beheerder = beheer:beheer",
-                 bg='#330d05', fg='white', font=('Arial', 12, 'italic'))
-labeltop.pack(padx=15, pady=5)
 
 Label1 = Label(master=loginscherm, text='Gebruiker:', fg='#c4ad5a', bg='#330d05', font=('Arial', 14))
 Label1.pack(padx=15, pady=5)
 gebruiker_1 = Entry(master=loginscherm, bd=5)
 gebruiker_1.pack(padx=15, pady=5)
 
-Label2 = Label(master=loginscherm, text='Wachtwoord: ', fg='#c4ad5a', bg='#330d05', font=('Arial', 14))
+Label2 = Label(master=loginscherm, text='Email: ', fg='#c4ad5a', bg='#330d05', font=('Arial', 14))
 Label2.pack(padx=15, pady=6)
-wachtwoord_1 = Entry(master=loginscherm, bd=5, show="*")
-wachtwoord_1.pack(padx=15, pady=7)
+email_1 = Entry(master=loginscherm, bd=5)
+email_1.pack(padx=15, pady=7)
 
-btn = Button(master=loginscherm, text='Login', command=login, bg='#c4ad5a', font=('Arial', 14, 'bold'))
+
+btn = Button(master=loginscherm, text='Login als gebruiker', command=login, bg='#c4ad5a', font=('Arial', 14, 'bold'))
 btn.pack(padx=5)
+
+btn_beheer = Button(master=loginscherm, text='Bent u aanbieder?', command=login_beheer,
+                    bg='#c4ad5a', font=('Arial', 14, 'bold'))
+btn_beheer.pack(padx=5)
 
 toon_loginscherm()
 master_root.mainloop()
