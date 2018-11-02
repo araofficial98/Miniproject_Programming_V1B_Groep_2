@@ -216,7 +216,7 @@ def betalen():
 def aanmaken():
     gebruikersnaam2 = gebruiker_1.get()
     global my_qr
-    my_qr = pyqrcode.create("Bewijs: " + gebruikersnaam2)
+    my_qr = pyqrcode.create(gebruikersnaam2)
     my_qr.png("QR_CODE_FILM.png", scale=6)
     qr_image = my_qr.xbm(scale=6)
     global foto
