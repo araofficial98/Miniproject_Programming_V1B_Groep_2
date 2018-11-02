@@ -245,7 +245,7 @@ def tooncode():
 
     global foto
     notification_label.config(image=foto, text="Naam: " + gebruikersnaam2 + " Mail: " + mail2)
-    sublabel.config(text=gebruikersnaam2 +' zijn/haar QR-code voor: ' + str(film_details(entryy())[0]))
+    sublabel.config(text=gebruikersnaam2 + ' zijn/haar QR-code voor: ' + str(film_details(entryy())[0]))
 
 # De QR code wordt weergeven.
 
