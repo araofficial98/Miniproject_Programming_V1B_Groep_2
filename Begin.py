@@ -94,10 +94,10 @@ def toon_beginscherm_beheer():
     leeg_lbl1.pack()
 
     toevoeg_knop = Button(master=beginscherm_beheer,
-                          text="Voeg film toe",
+                          text="Toon bezoekers",
                           font=('Arial', 14, 'bold'),
                           bg='#c4ad5a',
-                          command=ga_verder)
+                          command=toon_gebruikers)
 
     toevoeg_knop.pack()
 
@@ -185,10 +185,10 @@ def entryy():
 def writer():
     gebruikersnaam = gebruiker_1.get()
     mail = email_1.get()
-    with open('database.csv', 'w', newline='') as myfile:
+    with open('database.csv', 'a', newline='') as myfile:
         writer = csv.writer(myfile, delimiter=';')
-        writer.writerow((gebruikersnaam, mail , str(film_details(entryy())[0])))
-    myfile.close()
+        writer.writerow((gebruikersnaam, mail, str(film_details(entryy())[0])))
+        myfile.close()
 
 
 def ga_verder():
@@ -223,16 +223,16 @@ def aanmaken():
     foto = BitmapImage(data=qr_image)
     messagebox.showinfo("Betaling geslaagd!", "U heeft betaald!")
     tooncode()
-    # als de betaling geslaagd is geeft hij dit aan.
 
 
 def toon_gebruikers():
     file = open('database.csv', 'r')
-    lines = file.readlines()
-    box_gebruikers = messagebox
-    box_gebruikers.showinfo(lines)
-    file.close()
+    lines = file.read()
+    q = lines.splitlines()
 
+    box_gebruikers = messagebox
+    box_gebruikers.showinfo("Gebruikers", q)
+    file.close()
 
 
 def tooncode():
