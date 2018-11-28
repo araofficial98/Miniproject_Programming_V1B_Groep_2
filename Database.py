@@ -3,6 +3,7 @@ from urllib.request import urlopen
 import datetime
 
 
+# Deze functie haalt de database op uit de API-URL en houdt hem up to date qua tijd.
 def database():
     datum = datetime.datetime.now().date()
 
