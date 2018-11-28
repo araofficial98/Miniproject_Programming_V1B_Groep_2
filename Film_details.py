@@ -1,6 +1,7 @@
 from Database import *
 
 
+# Deze functie haalt een lijst op uit de database van de gekozen film met alle informatie over de film erin.
 def film_details(keuze_film):
     titel1 = films[keuze_film]['titel']
 
@@ -23,3 +24,4 @@ def film_details(keuze_film):
     total = [titel1, jaar1, genre1, duur1, imdb_rating1, land1, regisseur1, uitleg1, zender1]
 
     return total
+
